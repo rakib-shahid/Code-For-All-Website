@@ -189,6 +189,7 @@ const Leaderboard = () => {
                 fontWeight: "bold",
                 transition: "background-color 0.3s ease",
                 margin: "auto",
+                zIndex: 1000,
               }}
               onClick={toggleView}
             >
