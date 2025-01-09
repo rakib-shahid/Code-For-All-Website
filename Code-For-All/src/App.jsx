@@ -9,6 +9,7 @@ import purpleblender from "./assets/background blender purple.png";
 import { ChakraProvider } from "@chakra-ui/react"; // Import ChakraProvider
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Leaderboard from "./components/Leaderboard";
+import Projects from "./HomeComponents/Projects";
 
 function App() {
   return (
@@ -20,16 +21,18 @@ function App() {
             path="/"
             element={
               <>
-                <div className="">
+                <div className="relative overflow-hidden">
                   <LottieAnimation />
+
+                  <div id="home">
+                    <Header />
+                  </div>
+                  <Hero className="mb-20" />
+                  <div id="about">{/* About section content */}</div>
                 </div>
-                <div id="home">
-                  <Header />
-                </div>
-                <Hero className="mb-20" />
-                <div id="about">{/* About section content */}</div>
+
                 <div id="board" className="relative">
-                  <div className="absolute inset-x-0 -bottom-20 flex z-10 opacity-40 pointer-events-none">
+                  <div className="absolute inset-x-0 -bottom-20 flex -z-1 opacity-40 pointer-events-none">
                     <img
                       src={purpleblender}
                       alt="Purple Blender"
@@ -48,6 +51,7 @@ function App() {
                   </div>
                   <PastEvent />
                 </div>
+
                 <div id="contact">
                   <Social />
                 </div>
