@@ -40,7 +40,10 @@ function Header() {
   return (
     <header className="text-purple-500 p-4 rounded-lg font-mono">
       <div className="container mx-auto flex items-center">
-        <a href="https://www.linkedin.com/company/code-for-all-qc">
+        <a
+          className="z-10"
+          href="https://www.linkedin.com/company/code-for-all-qc"
+        >
           <img
             src={logo}
             alt="Code for All logo"

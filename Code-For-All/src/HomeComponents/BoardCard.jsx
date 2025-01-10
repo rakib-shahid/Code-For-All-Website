@@ -1,25 +1,40 @@
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Image,
+  Link,
+} from "@nextui-org/react";
+
 function BoardCard({ image, name, role, description, link }) {
-    return (
-        <div className="flex-col min-w-56 max-w-72 p-5 m-10 rounded-xl shadow-lg shadow-black   bg-zinc-900 hover:scale-110 ease-in-out duration-300">
-            <div className="group hover:shadow-lg transition-shadow duration-300">
-                <a href={link}>
-                    <div className="image-container h-60 w-full flex items-center justify-center"> {/* Set fixed dimensions for the image container */}
-                        <img
-                            src={image}
-                            alt={name}
-                            className="rounded-md cursor-pointer hover:scale-105 ease-in-out duration-300 max-h-full max-w-full object-cover" // Set max-height and max-width to maintain aspect ratio
-                        />
-                    </div>
-                </a>
-                <br />
-                <h1 className="text-purple-500 textglow font-bold m-0">{name}</h1>
-                <h3 className="text-green-300 greenTextGlow">{role}</h3>
-                <div className="description-container overflow-hidden h-20"> {/* Set a fixed height */}
-                    <h2 className="text-white textglow mt-5">{description}</h2>
-                </div>
+  return (
+    <>
+      <Link
+        href={link}
+        target="_blank"
+        className="text-blue-500 hover:opacity-100 "
+      >
+        <Card className="w-80 h-[28rem] m-10 hover:scale-110 transition-transform duration-300 ease-in-out shadow-lg shadow-black bg-zinc-900">
+          <CardHeader className="relative overflow-hidden justify-center items-center my-2">
+            <Image
+              src={image}
+              alt={`${name} image`}
+              className="rounded-md cursor-pointer hover:scale-105 transition-transform duration-300 max-h-60 object-cover"
+            />
+          </CardHeader>
+          <CardBody className="text-center p-4">
+            <h1 className="text-purple-500 textglow font-bold m-0">{name}</h1>
+            <h3 className="text-green-300 greenTextGlow">{role}</h3>
+            <div className="description-container overflow-hidden max-h-16 mt-2">
+              <p className="text-white textglow">{description}</p>
             </div>
-        </div>
-    );
+          </CardBody>
+          <CardFooter className="text-center"></CardFooter>
+        </Card>
+      </Link>
+    </>
+  );
 }
 
 export default BoardCard;

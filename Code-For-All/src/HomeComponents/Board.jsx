@@ -1,132 +1,89 @@
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { forwardRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import BoardCard from "./BoardCard";
 import { BOARDINFO } from "../BoardInfo";
 import { PASTBOARDINFO } from "../PastBoard";
-import { forwardRef, useEffect, useState } from "react";
 
 const Board = forwardRef((props, ref) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 480);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      partialVisibilityGutter: 50,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      partialVisibilityGutter: 40,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      partialVisibilityGutter: 30,
-    },
-  };
-
   return (
     <section
       id="second-section"
-      className="bg-gradient-to-b from-white to-custom-dark-blue pb-20"
+      className="bg-gradient-to-b from-transparent to-custom-dark-blue pb-20"
     >
-      <div className="mt-36 text-center" ref={ref}>
+      <div className="text-center" ref={ref}>
         <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold mb-4 font-mono">
           Our Board
         </h1>
-        <Carousel
-          additionalTransfrom={0}
-          arrows
-          autoPlay
-          autoPlaySpeed={4000}
-          centerMode={true}
-          className=""
-          containerClass="container-with-dots"
-          customTransition="all 1s linear"
-          draggable
-          focusOnSelect={false}
-          infinite
-          itemClass=""
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          responsive={responsive}
-          rewind={false}
-          showDots={false}
-          slidesToSlide={1}
-          swipeable
-          transitionDuration={1000}
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1600: { slidesPerView: 5 },
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          navigation
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
         >
-          {BOARDINFO.map((member) => (
-            <BoardCard
-              image={member.image}
-              name={member.name}
-              role={member.role}
-              description={member.description}
-              link={member.link}
-            />
+          {BOARDINFO.map((member, index) => (
+            <SwiperSlide key={index}>
+              <BoardCard
+                image={member.image}
+                name={member.name}
+                role={member.role}
+                description={member.description}
+                link={member.link}
+              />
+            </SwiperSlide>
           ))}
-        </Carousel>
+        </Swiper>
+
         <br />
+
         <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold mb-4 font-mono">
           Past Board
         </h1>
-        <Carousel
-          additionalTransfrom={0}
-          arrows
-          autoPlay
-          autoPlaySpeed={4000}
-          centerMode={true}
-          className=""
-          containerClass="container-with-dots"
-          customTransition="all 1s linear"
-          draggable
-          focusOnSelect={false}
-          infinite
-          itemClass=""
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          responsive={{
-            desktop: {
-              breakpoint: { max: 3000, min: 1024 },
-              items: 3,
-              partialVisibilityGutter: 50,
-            },
-            tablet: {
-              breakpoint: { max: 1024, min: 464 },
-              items: 2,
-              partialVisibilityGutter: 40,
-            },
-            mobile: {
-              breakpoint: { max: 464, min: 0 },
-              items: 1,
-              partialVisibilityGutter: 30,
-            },
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1500: { slidesPerView: 3 },
           }}
-          rewind={false}
-          showDots={false}
-          slidesToSlide={1}
-          swipeable
-          transitionDuration={1000}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          navigation
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
         >
-          {PASTBOARDINFO.map((member) => (
-            <BoardCard
-              image={member.image}
-              name={member.name}
-              role={member.role}
-              description={member.description}
-              link={member.link}
-            />
+          {PASTBOARDINFO.map((member, index) => (
+            <SwiperSlide key={index}>
+              <BoardCard
+                image={member.image}
+                name={member.name}
+                role={member.role}
+                description={member.description}
+                link={member.link}
+              />
+            </SwiperSlide>
           ))}
-        </Carousel>
+        </Swiper>
       </div>
     </section>
   );

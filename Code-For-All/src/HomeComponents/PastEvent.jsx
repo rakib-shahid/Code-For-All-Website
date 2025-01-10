@@ -1,9 +1,6 @@
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import PastEventCard from "./PastEventCard";
 import { PASTEVENTSINFO } from "../PastEventsInfo";
 import Lottie from "react-lottie";
-import Meet_a_scientist_event3 from "../assets/Meet_a_scientist_event3.jpg";
 import animationData from "../assets/PurpleSpacev2.json";
 import React, { forwardRef } from "react";
 import { INCOMINGEVENTSINFO } from "../IncomingEventsInfo";
@@ -30,6 +27,10 @@ const PastEvent = forwardRef((props, ref) => {
       </div>
 
       <div className="relative z-10 flex-col">
+        <h4 className="p-0 bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold mb-4 font-mono text-center text-white">
+          Past Events
+        </h4>
+
         <div className="flex flex-wrap justify-center">
           {PASTEVENTSINFO.map((event, index) => (
             <PastEventCard
@@ -41,11 +42,18 @@ const PastEvent = forwardRef((props, ref) => {
           ))}
         </div>
 
+        <h4 className="p-0 bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold mt-[6rem] font-mono text-center text-white">
+          Upcoming Event
+        </h4>
+
         <div className="flex flex-wrap justify-center " ref={ref}>
           <IncomingEvent
             title={INCOMINGEVENTSINFO[0].title}
             description={INCOMINGEVENTSINFO[0].description}
             images={INCOMINGEVENTSINFO[0].image}
+            date={INCOMINGEVENTSINFO[0].date}
+            location={INCOMINGEVENTSINFO[0].location}
+            rsvpLink={INCOMINGEVENTSINFO[0].rsvpLink}
           ></IncomingEvent>
         </div>
       </div>

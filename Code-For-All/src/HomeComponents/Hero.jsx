@@ -58,7 +58,7 @@ const Hero = forwardRef((props, ref) => {
             strive to create a supportive and inclusive learning environment
             where everyone can deepen their understanding of code and develop
             the skills necessary to tackle complex challenges. Together, we will
-            help each other achieve our full potential as engineers and
+            help each other achieve our full potential as coders and
             problem-solvers!
           </span>{" "}
         </p>

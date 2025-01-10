@@ -6,10 +6,9 @@ import Social from "./HomeComponents/Social";
 import PastEvent from "./HomeComponents/PastEvent";
 import LottieAnimation from "./HomeComponents/LottieAnimation";
 import purpleblender from "./assets/background blender purple.png";
-import { ChakraProvider } from "@chakra-ui/react"; // Import ChakraProvider
+import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Leaderboard from "./components/Leaderboard";
-import Projects from "./HomeComponents/Projects";
 
 function App() {
   return (
@@ -28,7 +27,7 @@ function App() {
                     <Header />
                   </div>
                   <Hero className="mb-20" />
-                  <div id="about">{/* About section content */}</div>
+                  <div id="about"></div>
                 </div>
 
                 <div id="board" className="relative">
