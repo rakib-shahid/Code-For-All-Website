@@ -146,7 +146,7 @@ export default function IncomingEvent({
                   </div>
 
                   <Button
-                    className="mt-4"
+                    className="mt-4 mx-auto w-[50%] py-8 text-lg font-semibold"
                     color="primary"
                     onPress={() => window.open(rsvpLink, "_blank")}
                   >
