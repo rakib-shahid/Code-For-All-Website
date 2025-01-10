@@ -158,125 +158,125 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="leaderboard-container">
-      <div className="content-container">
-        <div>
-          <LottieAnimation onClick={() => {}} />
-        </div>
-        <Header />
-        <Container style={{ margin: "0 auto" }}>
-          <h1
-            className="text-center my-4 title-container"
-            style={{
-              paddingBottom: showHistory ? "0px" : "120px",
-            }}
-          >
-            {showHistory ? "All-Time Leaderboard" : "Leetcode Leaderboard"}
-          </h1>
-          {!showHistory && <LeaderboardPodium topThree={topThree} />}
-
-          <div
-            className="d-flex justify-content-center mb-4 mt-4 "
-            style={{ display: "flex" }}
-          >
-            <button
-              className="btn btn-primary text-white"
+    <>
+      <LottieAnimation />
+      <div className="leaderboard-container">
+        <div className="content-container">
+          <Header />
+          <Container style={{ margin: "0 auto" }}>
+            <h1
+              className="text-center my-4 title-container"
               style={{
-                backgroundColor: "#c938ff",
-                border: "none",
-                padding: "10px 20px",
-                borderRadius: "20px",
-                fontWeight: "bold",
-                transition: "background-color 0.3s ease",
-                margin: "auto",
-                zIndex: 1000,
+                paddingBottom: showHistory ? "0px" : "120px",
               }}
-              onClick={toggleView}
             >
-              {showHistory ? "Show Current Rankings" : "Show All-Time Stats"}
-            </button>
-          </div>
+              {showHistory ? "All-Time Leaderboard" : "Leetcode Leaderboard"}
+            </h1>
+            {!showHistory && <LeaderboardPodium topThree={topThree} />}
 
-          {!showHistory && (
-            <SearchBar
-              searchQuery={searchQuery}
-              handleSearchChange={handleSearchChange}
-              inputDisabled={inputDisabled}
-            />
-          )}
+            <div
+              className="d-flex justify-content-center mb-4 mt-4 "
+              style={{ display: "flex" }}
+            >
+              <button
+                className="btn btn-primary text-white"
+                style={{
+                  backgroundColor: "#c938ff",
+                  border: "none",
+                  padding: "10px 20px",
+                  borderRadius: "20px",
+                  fontWeight: "bold",
+                  transition: "background-color 0.3s ease",
+                  margin: "auto",
+                  zIndex: 1000,
+                }}
+                onClick={toggleView}
+              >
+                {showHistory ? "Show Current Rankings" : "Show All-Time Stats"}
+              </button>
+            </div>
 
-          <AnimatePresence>
-            {showCard && (
-              <>
-                <motion.div
-                  className="grey-background"
-                  variants={fadeInVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: "rgba(0, 0, 0, 0.7)",
-                    zIndex: 999,
-                  }}
-                  onClick={() => {
-                    setShowCard(false);
-                    setInputDisabled(false);
-                    document.body.style.overflow = "auto";
-                  }}
-                />
-
-                <motion.div
-                  className="card-container"
-                  variants={fadeInVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  style={{
-                    position: "fixed",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    zIndex: 1000,
-                    width: "300px",
-                  }}
-                >
-                  <UserCard
-                    discordUsername={userDiscordName}
-                    leetcodeUsername={userLeetcodeName}
-                    avatarUrl={userAvatarURL}
-                    globalRanking={userGlobalRanking}
-                    localRanking={userLocalRanking}
-                    wins={userWins}
-                  />
-                </motion.div>
-              </>
+            {!showHistory && (
+              <SearchBar
+                searchQuery={searchQuery}
+                handleSearchChange={handleSearchChange}
+                inputDisabled={inputDisabled}
+              />
             )}
-          </AnimatePresence>
 
-          {showHistory ? (
-            <LeaderboardHistory
-              data={leaderboardHistory}
-              currentPage={historyPage}
-              onPageChange={handlePageChange}
-            />
-          ) : (
-            <LeaderboardTable
-              data={rest}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            />
-          )}
-        </Container>
+            <AnimatePresence>
+              {showCard && (
+                <>
+                  <motion.div
+                    className="grey-background"
+                    variants={fadeInVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      backgroundColor: "rgba(0, 0, 0, 0.7)",
+                      zIndex: 999,
+                    }}
+                    onClick={() => {
+                      setShowCard(false);
+                      setInputDisabled(false);
+                      document.body.style.overflow = "auto";
+                    }}
+                  />
+
+                  <motion.div
+                    className="card-container"
+                    variants={fadeInVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    style={{
+                      position: "fixed",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      zIndex: 1000,
+                      width: "300px",
+                    }}
+                  >
+                    <UserCard
+                      discordUsername={userDiscordName}
+                      leetcodeUsername={userLeetcodeName}
+                      avatarUrl={userAvatarURL}
+                      globalRanking={userGlobalRanking}
+                      localRanking={userLocalRanking}
+                      wins={userWins}
+                    />
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+
+            {showHistory ? (
+              <LeaderboardHistory
+                data={leaderboardHistory}
+                currentPage={historyPage}
+                onPageChange={handlePageChange}
+              />
+            ) : (
+              <LeaderboardTable
+                data={rest}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            )}
+          </Container>
+        </div>
+        <div className="social-container">
+          <Social />
+        </div>
       </div>
-      <div className="social-container">
-        <Social />
-      </div>
-    </div>
+    </>
   );
 };
 
