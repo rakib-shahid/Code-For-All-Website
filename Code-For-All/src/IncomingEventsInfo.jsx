@@ -6,10 +6,13 @@ export const INCOMINGEVENTSINFO = [
     title: "Acing the Interview",
     location: "Example Room, Example Building",
     date: {
-      day: 17,
+      date: 43,
       month: "April",
       year: 2025,
-      full: "Monday, April 43",
+      day: "Monday",
+      get full() {
+        return `${this.day}, ${this.month} ${this.date}`;
+      },
       time: "-3:00 PM - 26:00 PM EST",
     },
     rsvpLink:

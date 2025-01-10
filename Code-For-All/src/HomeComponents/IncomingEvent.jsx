@@ -127,7 +127,7 @@ export default function IncomingEvent({
                         {date.month}
                       </div>
                       <div className="flex items-center justify-center font-semibold text-medium h-6 text-default-500">
-                        {date.day}
+                        {date.date}
                       </div>
                     </div>
                     <div className="flex flex-col gap-0.5">
