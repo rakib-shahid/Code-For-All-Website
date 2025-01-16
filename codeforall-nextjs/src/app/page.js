@@ -1,4 +1,5 @@
 import Example from "../components/examplecomponent";
+import purpleblender from "/assets/animation/purple_blender.png";
 
 export default function Home() {
   return (
