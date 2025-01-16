@@ -10,10 +10,10 @@ export const INCOMINGEVENTSINFO = [
       month: "April",
       year: 2025,
       day: "Monday",
+      time: "-3:00 PM - 26:00 PM EST",
       get full() {
         return `${this.day}, ${this.month} ${this.date}`;
       },
-      time: "-3:00 PM - 26:00 PM EST",
     },
     rsvpLink:
       "https://github.com/Jshot117/Code-For-All-Website/blob/main/Code-For-All/src/assets/oliver.jpg?raw=true",
