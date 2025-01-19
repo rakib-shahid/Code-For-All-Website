@@ -4,7 +4,7 @@ import animationData from "../assets/PurpleComputer.json"; // Replace '../assets
 import { forwardRef } from "react";
 const Hero = forwardRef((props, ref) => {
   function handleClick() {
-    window.open("https://discord.gg/s8jwd4Es");
+    window.open("https://discord.gg/vadUHTqQyx");
   }
 
   // Lottie options
