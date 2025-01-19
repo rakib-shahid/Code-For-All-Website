@@ -3,12 +3,14 @@ import Header from "./HomeComponents/Header";
 import Hero from "./HomeComponents/Hero";
 import Board from "./HomeComponents/Board";
 import Social from "./HomeComponents/Social";
-import PastEvent from "./HomeComponents/PastEvent";
+import AnimationWrapper from "./HomeComponents/AnimationWrapper";
 import LottieAnimation from "./HomeComponents/LottieAnimation";
 import purpleblender from "./assets/background blender purple.png";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Leaderboard from "./components/Leaderboard";
+import Projects from "./HomeComponents/Projects";
+import Events from "./HomeComponents/Events";
 
 function App() {
   return (
@@ -48,7 +50,10 @@ function App() {
                       className="w-screen"
                     />
                   </div>
-                  <PastEvent />
+                  <AnimationWrapper>
+                    <Events />
+                    <Projects />
+                  </AnimationWrapper>
                 </div>
 
                 <div id="contact">
