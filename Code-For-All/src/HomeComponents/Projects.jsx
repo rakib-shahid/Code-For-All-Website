@@ -48,7 +48,7 @@ function Projects() {
         }}
         loop={true}
         modules={[Pagination, Autoplay, Mousewheel]}
-        className="mySwiper w-full max-w-[96rem] h-[40rem] px-4"
+        className="mySwiper w-full max-w-[96rem] h-[520px] px-4"
       >
         {projects.map((project, index) => (
           <SwiperSlide
