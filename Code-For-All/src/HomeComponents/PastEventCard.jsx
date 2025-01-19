@@ -21,19 +21,19 @@ function PastEventCard({ title, description, images }) {
   return (
     <>
       <Card
-        className="py-4 m-5 dark bg-gradient-to-tl from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out "
+        className="py-4 m-5 dark bg-gradient-to-tl from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out w-[80%] md:w-[60%] lg:w-[32rem] mx-auto"
         isPressable
         onPress={onOpen}
       >
-        <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-          <h4 className="font-bold text-large text-black">{title}</h4>
+        <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
+          <h4 className="font-bold text-2xl text-black mb-4">{title}</h4>
         </CardHeader>
-        <CardBody className="overflow-visible py-2">
+        <CardBody className="overflow-visible py-2 items-center">
           <Image
             alt={`${title} image`}
-            className="object-cover rounded-xl"
+            className="object-cover rounded-xl mx-auto"
             src={images[0]}
-            width={270}
+            width={"90%"}
           />
         </CardBody>
         <Drawer
