@@ -1,0 +1,26 @@
+[
+  {
+    "image": [
+      "/assets/event_images/internshipdiscussion/TIPD1.jpg",
+      "/assets/event_images/internshipdiscussion/TIPD1.jpg"
+    ],
+    "title": "Tech Internship Panel",
+    "description": "We collaborated with 'Girls Who Code' and 'Learning Commons' to share experience and valuable career advice from students who secured prestigious internships at companies such as Bloomberg, Goldman Sachs, Con Edison, Amazon and Nintendo."
+  },
+  {
+    "image": [
+      "/assets/event_images/clubdayfall24/ClubDay.jpg",
+      "/assets/event_images/clubdayfall24/ClubDay2.jpg"
+    ],
+    "title": "Club Day",
+    "description": "Queens College had a club day where each club represented themselves to the students of QC, of course we had to represent!"
+  },
+  {
+    "image": [
+      "/assets/event_images/acingtheinterview/1712856119764.jpg",
+      "/assets/event_images/acingtheinterview/1712856119764.jpg"
+    ],
+    "title": "Acing the Interview",
+    "description": "We had a chance at meeting a SWE from Google, Jason Hu, and ex-project manager from Facebook/Stripe/Google, Dianna Yau, to discuss interviewing tips/tricks to help students in their journey for an internship."
+  }
+]
