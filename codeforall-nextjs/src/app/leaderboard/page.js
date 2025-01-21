@@ -7,6 +7,7 @@ import "./Leaderboard.css";
 import LeaderboardPodium from "./components/LeaderboardPodium";
 import LeaderboardTable from "./components/LeaderboardTable";
 import LeaderboardHistory from "./components/LeaderboardHistory";
+import SearchBar from "./components/SearchBar";
 
 export default function Leaderboard({}) {
   const [initialLeaderboard, setLeaderboard] = useState([]);
@@ -14,6 +15,7 @@ export default function Leaderboard({}) {
   const [showHistory, setShowHistory] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [historyPage, setHistoryPage] = useState(0);
+  const [showCard, setShowCard] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +60,12 @@ export default function Leaderboard({}) {
       setCurrentPage(newPage);
     }
   };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const searchQuery = formData.get("search");
+    console.log(searchQuery);
+  };
 
   return (
     <div className="bg-white">
@@ -97,6 +105,10 @@ export default function Leaderboard({}) {
                 {showHistory ? "Show Current Rankings" : "Show All-Time Stats"}
               </button>
             </div>
+
+            {!showHistory && (
+              <SearchBar onSubmit={onSubmit} disabled={showCard} />
+            )}
 
             {showHistory ? (
               <LeaderboardHistory

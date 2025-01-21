@@ -131,7 +131,7 @@ export default function IncomingEvent({
                       </div>
                     </div>
                     <div className="flex flex-col gap-0.5">
-                      <p className="text-medium text-foreground font-medium">
+                      <p className="text-medium text-foreground font-medium text-white">
                         {date.full}
                       </p>
                       <p className="text-small text-default-500">{date.time}</p>
@@ -142,7 +142,9 @@ export default function IncomingEvent({
                     <span className="text-medium font-medium text-white">
                       About the event
                     </span>
-                    <p className="text-lg text-foreground">{description}</p>
+                    <p className="text-lg text-foreground text-white">
+                      {description}
+                    </p>
                   </div>
 
                   <Button
