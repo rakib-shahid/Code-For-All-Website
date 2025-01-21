@@ -70,6 +70,13 @@
     "link": "https://www.linkedin.com/in/rakib-shahid/"
   },
   {
+    "image": "/assets/board_images/fedy.jpg",
+    "name": "Fedy Cherif",
+    "role": "Workshop Developer",
+    "description": "",
+    "link": "https://www.linkedin.com/in/fedycherif/"
+  },
+  {
     "image": "https://i.imgur.com/a350HHm.png",
     "name": "Yonghao Lin",
     "role": "Tutor",
@@ -120,11 +127,26 @@
   },
 
   {
-    "image": "https://media.licdn.com/dms/image/v2/D4E03AQHBrGXfKdNmvQ/profile-displayphoto-shrink_800_800/B4EZO481teHwAc-/0/1733974778311?e=1741824000&v=beta&t=P3Vx7G7LuyzsxQlJRjFrtHHH9ozo8FIRPBnuNuRhGWo",
+    "image": "/assets/board_images/kerlyn.jpg",
     "name": "Kerlyn Difo",
     "role": "Newsletter",
     "description": "I have a dog named gordis",
     "link": "https://www.linkedin.com/in/kerlyn-difo-81059b23b/"
+  },
+
+  {
+    "image": "/assets/board_images/tasnim.jpg",
+    "name": "Tasnim Hossain",
+    "role": "Newsletter",
+    "description": "I love Tex chicken",
+    "link": "https://www.linkedin.com/in/tasnim-hossain-ny/"
+  },
+  {
+    "image": "/assets/board_images/paulo.jpg",
+    "name": "Paulo Criollo",
+    "role": "Company Outreach",
+    "description": "",
+    "link": "https://www.linkedin.com/in/paulocriollo/"
   },
 
   {
