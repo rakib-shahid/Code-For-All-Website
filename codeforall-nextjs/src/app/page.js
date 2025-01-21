@@ -1,12 +1,38 @@
+"use client";
+
 import Image from "next/image";
-import Header from "@/components/home_components/Header";
-import Hero from "@/components/home_components/Hero";
-import Board from "@/components/home_components/Board";
-import LottieAnimation from "@/components/home_components/LottieAnimation";
-import AnimationWrapper from "@/components/home_components/AnimationWrapper";
-import Events from "@/components/home_components/Events";
-import Projects from "@/components/home_components/Projects";
-import Social from "@/components/home_components/Social";
+import dynamic from "next/dynamic";
+
+// Dynamically import components without SSR
+const Header = dynamic(() => import("@/components/home_components/Header"), {
+  ssr: false,
+});
+const Hero = dynamic(() => import("@/components/home_components/Hero"), {
+  ssr: false,
+});
+const Board = dynamic(() => import("@/components/home_components/Board"), {
+  ssr: false,
+});
+const LottieAnimation = dynamic(
+  () => import("@/components/home_components/LottieAnimation"),
+  { ssr: false }
+);
+const AnimationWrapper = dynamic(
+  () => import("@/components/home_components/AnimationWrapper"),
+  { ssr: false }
+);
+const Events = dynamic(() => import("@/components/home_components/Events"), {
+  ssr: false,
+});
+const Projects = dynamic(
+  () => import("@/components/home_components/Projects"),
+  {
+    ssr: false,
+  }
+);
+const Social = dynamic(() => import("@/components/home_components/Social"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
