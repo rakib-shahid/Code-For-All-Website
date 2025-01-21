@@ -1,22 +1,12 @@
 "use client";
 import Lottie from "react-lottie";
-import { useState, useEffect, forwardRef } from "react";
+import { forwardRef } from "react";
+import animationData from "@/../public/assets/animation/PurpleComputer.json";
 
 const Hero = forwardRef((props, ref) => {
   function handleClick() {
     window.open("https://discord.gg/vadUHTqQyx");
   }
-  const [animationData, setAnimationData] = useState(null);
-  //   animation data must be fetched, cannot be imported
-  useEffect(() => {
-    const fetchAnimationData = async () => {
-      const response = await fetch("/assets/animation/PurpleComputer.json");
-      const data = await response.json();
-      setAnimationData(data);
-    };
-
-    fetchAnimationData();
-  }, []);
 
   const defaultOptions = {
     loop: true,

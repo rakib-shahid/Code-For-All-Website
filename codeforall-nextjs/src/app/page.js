@@ -4,10 +4,12 @@ import Board from "@/components/home_components/Board";
 import LottieAnimation from "@/components/home_components/LottieAnimation";
 import AnimationWrapper from "@/components/home_components/AnimationWrapper";
 import Events from "@/components/home_components/Events";
+import Projects from "@/components/home_components/Projects";
+import Social from "@/components/home_components/Social";
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-white">
       <LottieAnimation />
       <div id="home">
         <Header />
@@ -36,10 +38,13 @@ export default function Home() {
         </div>
         <AnimationWrapper>
           <Events />
+          <Projects />
         </AnimationWrapper>
       </div>
 
-      <div id="contact"></div>
+      <div id="contact">
+        <Social />
+      </div>
     </div>
   );
 }

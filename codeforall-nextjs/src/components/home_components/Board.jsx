@@ -6,27 +6,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import BoardCard from "./BoardCard";
-import { useEffect, useState } from "react";
+import boardInfo from "@/../public/assets/board_info/board.json";
+import pastBoardInfo from "@/../public/assets/board_info/past_board.json";
 
 const Board = forwardRef((props, ref) => {
-  const [pastBoardInfo, setPastBoardInfo] = useState([]);
-  const [boardInfo, setBoardInfo] = useState([]);
-  useEffect(() => {
-    const fetchPastBoardInfo = async () => {
-      const response = await fetch("/assets/board_info/past_board.json");
-      const data = await response.json();
-      setPastBoardInfo(data);
-    };
-    fetchPastBoardInfo();
-  }, []);
-  useEffect(() => {
-    const fetchBoardInfo = async () => {
-      const response = await fetch("/assets/board_info/board.json");
-      const data = await response.json();
-      setBoardInfo(data);
-    };
-    fetchBoardInfo();
-  }, []);
   return (
     <section
       id="second-section"

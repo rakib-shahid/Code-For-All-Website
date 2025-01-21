@@ -1,20 +1,9 @@
 "use client";
 import React from "react";
 import Lottie from "react-lottie";
-// import animationData from "../assets/PurpleSpace.json"; // JSON file path
-import { useState, useEffect, forwardRef } from "react";
+import animationData from "@/../public/assets/animation/PurpleSpace.json";
 
 const LottieAnimation = () => {
-  const [animationData, setAnimationData] = useState(null);
-  useEffect(() => {
-    const fetchAnimationData = async () => {
-      const response = await fetch("/assets/animation/PurpleSpace.json");
-      const data = await response.json();
-      setAnimationData(data);
-    };
-
-    fetchAnimationData();
-  }, []);
   const defaultOptions = {
     loop: true,
     autoplay: true,

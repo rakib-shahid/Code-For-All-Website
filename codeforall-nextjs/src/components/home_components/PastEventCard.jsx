@@ -93,11 +93,21 @@ function PastEventCard({ title, description, images }) {
                       }}
                       modules={[Pagination, Autoplay, Mousewheel]}
                       className="mySwiper py-10"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
                       {images.map((image, index) => (
                         <SwiperSlide
                           key={index}
-                          className="flex justify-center items-center"
+                          className="flex justify-center items-center my-[4rem]"
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
                         >
                           <Image
                             isBlurred

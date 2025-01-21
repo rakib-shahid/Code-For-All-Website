@@ -1,4 +1,4 @@
-export default function ExampleComponent() {
+export default function Example() {
   return (
     <div>
       <img
