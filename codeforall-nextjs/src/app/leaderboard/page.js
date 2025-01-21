@@ -1,13 +1,33 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Header from "@/components/home_components/Header";
-import LottieAnimation from "@/components/home_components/LottieAnimation";
-import Social from "@/components/home_components/Social";
+import dynamic from "next/dynamic";
 import "./Leaderboard.css";
-import LeaderboardPodium from "./components/LeaderboardPodium";
-import LeaderboardTable from "./components/LeaderboardTable";
-import LeaderboardHistory from "./components/LeaderboardHistory";
-import SearchBar from "./components/SearchBar";
+
+const Header = dynamic(() => import("@/components/home_components/Header"), {
+  ssr: false,
+});
+const LottieAnimation = dynamic(
+  () => import("@/components/home_components/LottieAnimation"),
+  { ssr: false }
+);
+const Social = dynamic(() => import("@/components/home_components/Social"), {
+  ssr: false,
+});
+const LeaderboardPodium = dynamic(
+  () => import("./components/LeaderboardPodium"),
+  { ssr: false }
+);
+const LeaderboardTable = dynamic(
+  () => import("./components/LeaderboardTable"),
+  { ssr: false }
+);
+const LeaderboardHistory = dynamic(
+  () => import("./components/LeaderboardHistory"),
+  { ssr: false }
+);
+const SearchBar = dynamic(() => import("./components/SearchBar"), {
+  ssr: false,
+});
 
 export default function Leaderboard({}) {
   const [initialLeaderboard, setLeaderboard] = useState([]);
