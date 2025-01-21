@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "@/components/home_components/Header";
 import Hero from "@/components/home_components/Hero";
 import Board from "@/components/home_components/Board";
@@ -19,7 +20,7 @@ export default function Home() {
 
       <div id="board" className="relative">
         <div className="absolute inset-x-0 -bottom-20 flex -z-1 opacity-40 pointer-events-none">
-          <img
+          <Image
             src="/assets/animation/purple_blender.png"
             alt="Purple Blender"
             className="w-screen"
@@ -30,7 +31,7 @@ export default function Home() {
 
       <div id="event" className="relative">
         <div className="absolute inset-x-0 -top-20 flex z-10 h-72 opacity-85">
-          <img
+          <Image
             src="/assets/animation/purple_blender.png"
             alt="Purple Blender"
             className="w-screen"

@@ -11,7 +11,7 @@ const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
   const itemsPerPage = 10;
   const startIndex = currentPage * itemsPerPage;
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  //   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   return (
     <>
