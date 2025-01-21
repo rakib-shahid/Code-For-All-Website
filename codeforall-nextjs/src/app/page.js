@@ -3,7 +3,6 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// Dynamically import components without SSR
 const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: false,
 });
@@ -47,6 +46,7 @@ export default function Home() {
       <div id="board" className="relative">
         <div className="absolute inset-x-0 -bottom-20 flex -z-1 opacity-40 pointer-events-none">
           <Image
+            fill={true}
             src="/assets/animation/purple_blender.png"
             alt="Purple Blender"
             className="w-screen"
@@ -58,6 +58,7 @@ export default function Home() {
       <div id="event" className="relative">
         <div className="absolute inset-x-0 -top-20 flex z-10 h-72 opacity-85">
           <Image
+            fill={true}
             src="/assets/animation/purple_blender.png"
             alt="Purple Blender"
             className="w-screen"
