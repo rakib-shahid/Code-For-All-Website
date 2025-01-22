@@ -4,33 +4,33 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const Header = dynamic(() => import("@/components/home_components/Header"), {
-  ssr: false,
+  ssr: true,
 });
 const Hero = dynamic(() => import("@/components/home_components/Hero"), {
-  ssr: false,
+  ssr: true,
 });
 const Board = dynamic(() => import("@/components/home_components/Board"), {
-  ssr: false,
+  ssr: true,
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: false }
+  { ssr: true }
 );
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
-  { ssr: false }
+  { ssr: true }
 );
 const Events = dynamic(() => import("@/components/home_components/Events"), {
-  ssr: false,
+  ssr: true,
 });
 const Projects = dynamic(
   () => import("@/components/home_components/Projects"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
-  ssr: false,
+  ssr: true,
 });
 
 export default function Home() {
