@@ -14,11 +14,11 @@ const Board = dynamic(() => import("@/components/home_components/Board"), {
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: true }
+  { ssr: false }
 );
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
-  { ssr: false }
+  { ssr: true }
 );
 const Events = dynamic(() => import("@/components/home_components/Events"), {
   ssr: false,
