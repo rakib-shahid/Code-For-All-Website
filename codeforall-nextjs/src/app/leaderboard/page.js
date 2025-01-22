@@ -1,10 +1,23 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "./Leaderboard.css";
 import useSWR from "swr";
+import { useDisclosure } from "@heroui/react";
+import UserCard from "./components/UserCard";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = (url, options = {}) =>
+  fetch(url, options)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .catch((error) => {
+      console.error("Fetcher error:", error);
+      throw error;
+    });
 
 const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
@@ -36,7 +49,12 @@ export default function Leaderboard({}) {
   const [showHistory, setShowHistory] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [historyPage, setHistoryPage] = useState(0);
-  const [showCard, setShowCard] = useState(false);
+  const [searchResult, setSearchResult] = useState(null);
+  const [searchError, setSearchError] = useState(null);
+
+  // Modal state management
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const { data: leaderboardData, error: leaderboardError } = useSWR(
     "https://server.rakibshahid.com/leaderboard",
     fetcher
@@ -45,6 +63,7 @@ export default function Leaderboard({}) {
     "https://server.rakibshahid.com/leaderboard/leaderboard_history",
     fetcher
   );
+
   if (leaderboardError || historyError) {
     return <div>Failed to load data</div>;
   }
@@ -66,12 +85,64 @@ export default function Leaderboard({}) {
       setCurrentPage(newPage);
     }
   };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("search");
 
-    console.log(searchQuery);
+    if (!searchQuery) {
+      setSearchError("Search query cannot be empty.");
+      return;
+    }
+
+    try {
+      // try discord endpoint
+      let response = await fetch(
+        "https://server.rakibshahid.com/api/discord_lookup",
+        {
+          method: "GET",
+          headers: {
+            "discord-username": searchQuery,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        // fallback to leetcode endpoint
+        response = await fetch(
+          "https://server.rakibshahid.com/api/leetcode_lookup",
+          {
+            method: "GET",
+            headers: {
+              "leetcode-username": searchQuery,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Both APIs failed to fetch user data.");
+        }
+
+        // leetcode success
+        const leetcodeData = await response.json();
+        console.log("Leetcode User Data:", leetcodeData);
+        setSearchResult(leetcodeData);
+      } else {
+        // discord success
+        const discordData = await response.json();
+        console.log("Discord User Data:", discordData);
+        setSearchResult(discordData);
+      }
+
+      setSearchError(null);
+      onOpen();
+    } catch (error) {
+      console.error("Error during search request:", error);
+      setSearchResult(null);
+      setSearchError(error.message);
+      onOpen();
+    }
   };
 
   return (
@@ -92,7 +163,7 @@ export default function Leaderboard({}) {
             {!showHistory && <LeaderboardPodium topThree={topThree} />}
 
             <div
-              className="d-flex justify-content-center mb-4 mt-4 "
+              className="d-flex justify-content-center mb-4 mt-4"
               style={{ display: "flex" }}
             >
               <button
@@ -105,7 +176,7 @@ export default function Leaderboard({}) {
                   fontWeight: "bold",
                   transition: "background-color 0.3s ease",
                   margin: "auto",
-                  zIndex: 1000,
+                  zIndex: 2,
                 }}
                 onClick={toggleView}
               >
@@ -114,7 +185,7 @@ export default function Leaderboard({}) {
             </div>
 
             {!showHistory && (
-              <SearchBar onSubmit={onSubmit} disabled={showCard} />
+              <SearchBar onSubmit={onSubmit} disabled={isOpen} />
             )}
 
             {showHistory ? (
@@ -130,6 +201,14 @@ export default function Leaderboard({}) {
                 onPageChange={handlePageChange}
               />
             )}
+
+            {}
+
+            <UserCard
+              isOpen={isOpen}
+              onOpenChange={onOpenChange}
+              searchResult={searchResult}
+            />
           </div>
         </div>
         <div className="social-container">
