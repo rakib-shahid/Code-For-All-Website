@@ -18,7 +18,7 @@ const LottieAnimation = dynamic(
 );
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
-  { ssr: true }
+  { ssr: false }
 );
 const Events = dynamic(() => import("@/components/home_components/Events"), {
   ssr: false,
@@ -30,7 +30,7 @@ const Projects = dynamic(
   }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
-  ssr: false,
+  ssr: true,
 });
 
 export default function Home() {
