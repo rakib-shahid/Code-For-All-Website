@@ -26,7 +26,7 @@ const Events = dynamic(() => import("@/components/home_components/Events"), {
 const Projects = dynamic(
   () => import("@/components/home_components/Projects"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
