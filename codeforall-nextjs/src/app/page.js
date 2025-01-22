@@ -7,7 +7,7 @@ const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
 });
 const Hero = dynamic(() => import("@/components/home_components/Hero"), {
-  ssr: false,
+  ssr: true,
 });
 const Board = dynamic(() => import("@/components/home_components/Board"), {
   ssr: false,
