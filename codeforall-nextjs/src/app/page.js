@@ -10,11 +10,11 @@ const Hero = dynamic(() => import("@/components/home_components/Hero"), {
   ssr: false,
 });
 const Board = dynamic(() => import("@/components/home_components/Board"), {
-  ssr: true,
+  ssr: false,
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: false }
+  { ssr: true }
 );
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
