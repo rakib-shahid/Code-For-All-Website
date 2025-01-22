@@ -2,76 +2,62 @@
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import "./Leaderboard.css";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Header = dynamic(() => import("@/components/home_components/Header"), {
-  ssr: false,
+  ssr: true,
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: false }
+  { ssr: true }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
-  ssr: false,
+  ssr: true,
 });
 const LeaderboardPodium = dynamic(
   () => import("./components/LeaderboardPodium"),
-  { ssr: false }
+  { ssr: true }
 );
 const LeaderboardTable = dynamic(
   () => import("./components/LeaderboardTable"),
-  { ssr: false }
+  { ssr: true }
 );
 const LeaderboardHistory = dynamic(
   () => import("./components/LeaderboardHistory"),
-  { ssr: false }
+  { ssr: true }
 );
 const SearchBar = dynamic(() => import("./components/SearchBar"), {
-  ssr: false,
+  ssr: true,
 });
 
 export default function Leaderboard({}) {
-  const [initialLeaderboard, setLeaderboard] = useState([]);
-  const [initialLeaderboardHistory, setLeaderboardHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [historyPage, setHistoryPage] = useState(0);
   const [showCard, setShowCard] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [leaderboardResponse, leaderboardHistoryResponse] =
-          await Promise.all([
-            fetch("https://server.rakibshahid.com/leaderboard", {
-              cache: "no-store",
-            }),
-            fetch(
-              "https://server.rakibshahid.com/leaderboard/leaderboard_history",
-              {
-                next: { revalidate: 10 },
-              }
-            ),
-          ]);
-
-        const leaderboardData = await leaderboardResponse.json();
-        const leaderboardHistoryData = await leaderboardHistoryResponse.json();
-
-        setLeaderboard(leaderboardData);
-        setLeaderboardHistory(leaderboardHistoryData);
-      } catch (error) {
-        console.error("Error fetching leaderboard data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { data: leaderboardData, error: leaderboardError } = useSWR(
+    "https://server.rakibshahid.com/leaderboard",
+    fetcher
+  );
+  const { data: leaderboardHistoryData, error: historyError } = useSWR(
+    "https://server.rakibshahid.com/leaderboard/leaderboard_history",
+    fetcher
+  );
+  if (leaderboardError || historyError) {
+    return <div>Failed to load data</div>;
+  }
+  if (!leaderboardData || !leaderboardHistoryData) {
+    return <div className="text-black">Loading...</div>;
+  }
 
   const toggleView = () => {
     setShowHistory(!showHistory);
   };
 
-  const topThree = initialLeaderboard.slice(0, 3);
-  const rest = initialLeaderboard.slice(3);
+  const topThree = leaderboardData.slice(0, 3);
+  const rest = leaderboardData.slice(3);
 
   const handlePageChange = (newPage) => {
     if (showHistory) {
@@ -84,6 +70,7 @@ export default function Leaderboard({}) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get("search");
+
     console.log(searchQuery);
   };
 
@@ -132,7 +119,7 @@ export default function Leaderboard({}) {
 
             {showHistory ? (
               <LeaderboardHistory
-                data={initialLeaderboardHistory}
+                data={leaderboardHistoryData}
                 currentPage={historyPage}
                 onPageChange={handlePageChange}
               />
