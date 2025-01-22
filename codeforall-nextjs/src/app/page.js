@@ -14,7 +14,7 @@ const Board = dynamic(() => import("@/components/home_components/Board"), {
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: false }
+  { ssr: true }
 );
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
