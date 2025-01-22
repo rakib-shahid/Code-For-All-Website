@@ -21,7 +21,7 @@ const AnimationWrapper = dynamic(
   { ssr: true }
 );
 const Events = dynamic(() => import("@/components/home_components/Events"), {
-  ssr: false,
+  ssr: true,
 });
 const Projects = dynamic(
   () => import("@/components/home_components/Projects"),
