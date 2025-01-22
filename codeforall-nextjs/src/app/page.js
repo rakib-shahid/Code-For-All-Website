@@ -7,30 +7,30 @@ const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
 });
 const Hero = dynamic(() => import("@/components/home_components/Hero"), {
-  ssr: true,
+  ssr: false,
 });
 const Board = dynamic(() => import("@/components/home_components/Board"), {
-  ssr: true,
+  ssr: false,
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: true }
+  { ssr: false }
 );
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
-  { ssr: true }
+  { ssr: false }
 );
 const Events = dynamic(() => import("@/components/home_components/Events"), {
-  ssr: true,
+  ssr: false,
 });
 const Projects = dynamic(
   () => import("@/components/home_components/Projects"),
   {
-    ssr: true,
+    ssr: false,
   }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
-  ssr: true,
+  ssr: false,
 });
 
 export default function Home() {
