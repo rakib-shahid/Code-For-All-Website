@@ -3,7 +3,10 @@ import IncomingEvent from "./IncomingEvent";
 import pastEventsInfo from "@/../public/assets/event_info/past.json";
 import incomingEventInfo from "@/../public/assets/event_info/incoming.json";
 
-const Events = () => {
+const Events = async () => {
+  const resIncoming = await fetch("/api/upcoming_event");
+  const incomingEventJson = await resIncoming.json();
+  console.log(incomingEventJson);
   return (
     <div className="relative z-10 flex-col">
       <h4 className="p-0 bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold mb-4 font-mono text-center text-white">

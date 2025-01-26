@@ -12,7 +12,7 @@ export async function GET() {
     );
     client.release();
 
-    return new Response(JSON.stringify(result.rows), {
+    return new Response(JSON.stringify(result.rows[0]), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
