@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { format, parseISO } from "date-fns";
 import {
   Card,
   CardHeader,
@@ -19,10 +20,15 @@ export default function IncomingEvent({
   title,
   description,
   location,
-  date,
+  timestamp,
   rsvpLink,
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const parsedDate = parseISO(timestamp);
+  const month = format(parsedDate, "MMMM");
+  const date = format(parsedDate, "dd");
+  const full = format(parsedDate, "EEEE, MMMM do yyyy");
+  const time = format(parsedDate, "h:mm a");
 
   return (
     <>
@@ -122,19 +128,21 @@ export default function IncomingEvent({
                   </div>
 
                   <div className="flex gap-3 items-center">
+                    {/* Date Box */}
                     <div className="flex-none border-1 border-default-200/50 rounded-small text-center w-11 overflow-hidden">
                       <div className="text-tiny bg-default-100 py-0.5 text-default-500">
-                        {date.month}
+                        {month.substring(0, 3)}
                       </div>
                       <div className="flex items-center justify-center font-semibold text-medium h-6 text-default-500">
-                        {date.date}
+                        {date}
                       </div>
                     </div>
+                    {/* Date Details */}
                     <div className="flex flex-col gap-0.5">
                       <p className="text-medium text-foreground font-medium text-white">
-                        {date.full}
+                        {full}
                       </p>
-                      <p className="text-small text-default-500">{date.time}</p>
+                      <p className="text-small text-default-500">{time}</p>
                     </div>
                   </div>
 
