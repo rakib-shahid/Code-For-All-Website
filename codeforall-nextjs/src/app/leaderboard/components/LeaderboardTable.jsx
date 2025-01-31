@@ -19,7 +19,7 @@ const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
       <motion.div initial="hidden" animate="visible" variants={fadeInVariants}>
         <table className="leaderboard-table-container">
           <thead>
-            <tr className="table-header">
+            <tr className="table-header ">
               <th>Rank</th>
               <th>Discord Username</th>
               <th>Leetcode Username</th>
