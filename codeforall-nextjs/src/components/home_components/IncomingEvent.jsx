@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
 import { format, parseISO } from "date-fns";
+import "./IncomingEvents.css";
+import "swiper/css";
+import "swiper/css/effect-cards";
 import {
   Card,
   CardHeader,
@@ -33,7 +36,7 @@ export default function IncomingEvent({
   return (
     <>
       <Card
-        className="w-[80%] md:w-[60%] lg:w-[32rem] mx-auto py-6 m-10 dark bg-gradient-to-br from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out"
+        className="w-full mx-auto dark bg-gradient-to-br from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out"
         isPressable
         onPress={onOpen}
       >

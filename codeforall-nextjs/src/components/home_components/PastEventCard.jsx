@@ -16,7 +16,7 @@ import {
   Button,
 } from "@heroui/react";
 
-function PastEventCard({ title, description, images }) {
+function PastEventCard({ title, description, mainImage, images }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -33,12 +33,13 @@ function PastEventCard({ title, description, images }) {
           <Image
             alt={`${title} image`}
             className="object-cover rounded-xl mx-auto"
-            src={images[0]}
+            src={mainImage}
             width={"90%"}
           />
         </CardBody>
         <Drawer
           size="xl"
+          backdrop="blur"
           className="dark"
           isOpen={isOpen}
           onOpenChange={onOpenChange}

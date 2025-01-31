@@ -8,11 +8,11 @@ export async function GET() {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      "SELECT * FROM events WHERE event_time > NOW() ORDER BY event_time ASC LIMIT 1;"
+      "SELECT * FROM events WHERE event_time > NOW() ORDER BY event_time ASC LIMIT 3;"
     );
     client.release();
 
-    return new Response(JSON.stringify(result.rows[0]), {
+    return new Response(JSON.stringify(result.rows), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
