@@ -35,7 +35,7 @@ export const SearchIcon = (props) => {
 export default function SearchBar({ onSubmit, disabled }) {
   return (
     <Form className="" validationBehavior="native" onSubmit={onSubmit}>
-      <div className="flex w-[30%] flex-wrap md:flex-nowrap gap-4 mx-auto mt-2 mb-4">
+      <div className="flex flex-col md:flex-row w-full max-w-md gap-4 mx-auto mt-2 mb-4 items-center justify-center">
         <Input
           isDisabled={disabled}
           name="search"
@@ -50,11 +50,12 @@ export default function SearchBar({ onSubmit, disabled }) {
               return "Invalid input!";
             }
           }}
+          className="w-full md:w-auto"
         />
         <Button
           isDisabled={disabled}
           type="submit"
-          className="bg-primary-500 text-white font-semibold"
+          className="w-full md:w-auto bg-primary-500 text-white font-semibold"
           radius="full"
         >
           Search
