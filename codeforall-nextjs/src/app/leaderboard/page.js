@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "./Leaderboard.css";
 import useSWR from "swr";
-import { Spinner, useDisclosure } from "@heroui/react";
+// import { Spinner, useDisclosure } from "@heroui/react";
 
 const fetcher = (url, options = {}) =>
   fetch(url, options)
@@ -18,6 +18,8 @@ const fetcher = (url, options = {}) =>
       throw error;
     });
 
+const Spinner = dynamic(() => import("@heroui/spinner"), { ssr: false });
+const useDisclosure = dynamic(() => import("@heroui/react"), { ssr: false });
 const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
 });
