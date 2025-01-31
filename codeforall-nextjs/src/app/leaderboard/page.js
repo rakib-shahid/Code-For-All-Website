@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "./Leaderboard.css";
 import useSWR from "swr";
-// import { Spinner, useDisclosure } from "@heroui/react";
+import { Spinner, useDisclosure } from "@heroui/react";
+import UserCard from "./components/UserCard";
 
 const fetcher = (url, options = {}) =>
   fetch(url, options)
@@ -18,12 +19,7 @@ const fetcher = (url, options = {}) =>
       throw error;
     });
 
-const Spinner = dynamic(() => import("@heroui/spinner"), { ssr: false });
-const useDisclosure = dynamic(() => import("@heroui/react"), { ssr: false });
 const Header = dynamic(() => import("@/components/home_components/Header"), {
-  ssr: true,
-});
-const UserCard = dynamic(() => import("./components/UserCard"), {
   ssr: true,
 });
 const LottieAnimation = dynamic(
@@ -50,7 +46,7 @@ const SearchBar = dynamic(() => import("./components/SearchBar"), {
 });
 const AnimationWrapper = dynamic(
   () => import("@/components/home_components/AnimationWrapper"),
-  { ssr: true }
+  { ssr: false }
 );
 
 export default function Leaderboard({}) {
