@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "./Leaderboard.css";
 import useSWR from "swr";
-import { useDisclosure } from "@heroui/react";
+import { Spinner, useDisclosure } from "@heroui/react";
 import UserCard from "./components/UserCard";
 
 const fetcher = (url, options = {}) =>
@@ -44,6 +44,10 @@ const LeaderboardHistory = dynamic(
 const SearchBar = dynamic(() => import("./components/SearchBar"), {
   ssr: true,
 });
+const AnimationWrapper = dynamic(
+  () => import("@/components/home_components/AnimationWrapper"),
+  { ssr: true }
+);
 
 export default function Leaderboard({}) {
   const [showHistory, setShowHistory] = useState(false);
@@ -67,16 +71,10 @@ export default function Leaderboard({}) {
   if (leaderboardError || historyError) {
     return <div>Failed to load data</div>;
   }
-  if (!leaderboardData || !leaderboardHistoryData) {
-    return <div className="text-black">Loading...</div>;
-  }
 
   const toggleView = () => {
     setShowHistory(!showHistory);
   };
-
-  const topThree = leaderboardData.slice(0, 3);
-  const rest = leaderboardData.slice(3);
 
   const handlePageChange = (newPage) => {
     if (showHistory) {
@@ -145,71 +143,87 @@ export default function Leaderboard({}) {
     }
   };
 
+  //   if (!leaderboardData || !leaderboardHistoryData) {
+  //     return <div className="text-black">Loading...</div>;
+  //   }
+
   return (
     <div className="bg-white">
       <LottieAnimation />
       <div className="leaderboard-container h-[120vh]">
         <div className="content-container">
-          <Header />
-          <div style={{ margin: "0 auto" }}>
-            <h1
-              className="text-center my-4 title-container"
-              style={{
-                paddingBottom: showHistory ? "0px" : "120px",
-              }}
-            >
-              {showHistory ? "All-Time Leaderboard" : "Leetcode Leaderboard"}
-            </h1>
-            {!showHistory && <LeaderboardPodium topThree={topThree} />}
-
-            <div
-              className="d-flex justify-content-center mb-4 mt-4"
-              style={{ display: "flex" }}
-            >
-              <button
-                className="btn btn-primary text-white"
+          {leaderboardData ? (
+            <div style={{ margin: "0 auto" }}>
+              <Header />
+              <h1
+                className="text-center title-container text-[3rem] mb-4 px-4"
                 style={{
-                  backgroundColor: "#c938ff",
-                  border: "none",
-                  padding: "10px 20px",
-                  borderRadius: "20px",
-                  fontWeight: "bold",
-                  transition: "background-color 0.3s ease",
-                  margin: "auto",
-                  zIndex: 2,
+                  paddingBottom: showHistory ? "0px" : "120px",
                 }}
-                onClick={toggleView}
               >
-                {showHistory ? "Show Current Rankings" : "Show All-Time Stats"}
-              </button>
+                {showHistory ? "All-Time Leaderboard" : "Leetcode Leaderboard"}
+              </h1>
+              {!showHistory && (
+                <LeaderboardPodium topThree={leaderboardData.slice(0, 3)} />
+              )}
+
+              <div
+                className="d-flex justify-content-center mb-4 mt-4"
+                style={{ display: "flex" }}
+              >
+                <button
+                  className="btn btn-primary text-white"
+                  style={{
+                    backgroundColor: "#c938ff",
+                    border: "none",
+                    padding: "10px 20px",
+                    borderRadius: "20px",
+                    fontWeight: "bold",
+                    transition: "background-color 0.3s ease",
+                    margin: "auto",
+                    zIndex: 2,
+                  }}
+                  onClick={toggleView}
+                >
+                  {showHistory
+                    ? "Show Current Rankings"
+                    : "Show All-Time Stats"}
+                </button>
+              </div>
+
+              {!showHistory && (
+                <SearchBar onSubmit={onSubmit} disabled={isOpen} />
+              )}
+
+              {showHistory ? (
+                <LeaderboardHistory
+                  data={leaderboardHistoryData}
+                  currentPage={historyPage}
+                  onPageChange={handlePageChange}
+                />
+              ) : (
+                <LeaderboardTable
+                  data={leaderboardData.slice(3)}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                />
+              )}
+
+              {}
+
+              <UserCard
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                searchResult={searchResult}
+              />
             </div>
-
-            {!showHistory && (
-              <SearchBar onSubmit={onSubmit} disabled={isOpen} />
-            )}
-
-            {showHistory ? (
-              <LeaderboardHistory
-                data={leaderboardHistoryData}
-                currentPage={historyPage}
-                onPageChange={handlePageChange}
-              />
-            ) : (
-              <LeaderboardTable
-                data={rest}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-              />
-            )}
-
-            {}
-
-            <UserCard
-              isOpen={isOpen}
-              onOpenChange={onOpenChange}
-              searchResult={searchResult}
-            />
-          </div>
+          ) : (
+            <AnimationWrapper>
+              <div className="flex justify-center items-center h-[80vh]">
+                <Spinner />
+              </div>
+            </AnimationWrapper>
+          )}
         </div>
         <div className="social-container">
           <Social />

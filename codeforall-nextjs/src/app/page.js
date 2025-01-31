@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Spinner } from "@heroui/spinner";
 
 const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
@@ -34,23 +37,59 @@ const Social = dynamic(() => import("@/components/home_components/Social"), {
 });
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const heroAnimation = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-white">
+        <Spinner />
+        <LottieAnimation />
+      </div>
+    );
+  }
+
   return (
     <div className="relative overflow-hidden bg-white">
       <LottieAnimation />
       <div id="home">
         <Header />
       </div>
-      <Hero className="mb-20" />
+
+      <motion.div
+        className="mb-20"
+        initial="hidden"
+        animate="visible"
+        variants={heroAnimation}
+      >
+        <Hero />
+      </motion.div>
       <div id="about"></div>
 
       <div id="board" className="relative">
         <div className="absolute inset-x-0 -bottom-20 flex -z-1 opacity-40 pointer-events-none">
-          <Image
-            fill={true}
-            src="/assets/animation/purple_blender.png"
-            alt="Purple Blender"
-            className="w-screen"
-          />
+          <div className="relative w-screen h-auto">
+            <img
+              src="/assets/animation/purple_blender.png"
+              alt="Purple Blender"
+              className="w-screen h-auto object-cover"
+            />
+          </div>
         </div>
         <Board className="bg-custom-dark-blue" />
       </div>
