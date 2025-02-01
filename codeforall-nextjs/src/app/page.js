@@ -1,16 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Spinner } from "@heroui/spinner";
 
 const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
 });
 const Hero = dynamic(() => import("@/components/home_components/Hero"), {
-  ssr: true,
+  ssr: false,
 });
 const Board = dynamic(() => import("@/components/home_components/Board"), {
   ssr: true,
@@ -28,23 +27,35 @@ const Events = dynamic(() => import("@/components/home_components/Events"), {
 });
 const Projects = dynamic(
   () => import("@/components/home_components/Projects"),
-  {
-    ssr: true,
-  }
+  { ssr: true }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
   ssr: true,
 });
 
 export default function Home() {
-  //   const [isLoading, setIsLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
+  const [hasSeenLoading, setHasSeenLoading] = useState(false);
 
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //       setIsLoading(false);
-  //     }, 0);
-  //     return () => clearTimeout(timer);
-  //   }, []);
+  useEffect(() => {
+    const hasVisitedBefore = localStorage.getItem("hasVisitedHome");
+
+    if (!hasVisitedBefore) {
+      setHasSeenLoading(true);
+      localStorage.setItem("hasVisitedHome", "true");
+
+      setTimeout(() => {
+        setIsClient(true);
+        setHasSeenLoading(false);
+      }, 0);
+    } else {
+      setIsClient(true);
+    }
+  }, []);
+
+  if (!isClient) {
+    return hasSeenLoading ? <LottieAnimation /> : null;
+  }
 
   const heroAnimation = {
     hidden: { opacity: 0, y: -30 },
@@ -54,15 +65,6 @@ export default function Home() {
       transition: { duration: 1, ease: "easeOut" },
     },
   };
-
-  //   if (isLoading) {
-  //     return (
-  //       <div className="flex justify-center items-center h-screen bg-white">
-  //         <Spinner />
-  //         <LottieAnimation />
-  //       </div>
-  //     );
-  //   }
 
   return (
     <div className="relative overflow-hidden bg-white">
