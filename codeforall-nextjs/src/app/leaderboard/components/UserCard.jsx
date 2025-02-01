@@ -67,18 +67,18 @@ export default function UserCard({ isOpen, onOpenChange, searchResult }) {
             <ModalBody className="text-xl">
               {error == false ? (
                 <>
-                  <a
-                    href={
-                      "https://leetcode.com/u/" + searchResult.leetcode_username
+                  <img
+                    src={searchResult.avatar}
+                    alt="User Avatar"
+                    className="rounded-xl w-80 h-80 mx-auto my-4 cursor-pointer"
+                    onClick={() =>
+                      window.open(
+                        "https://leetcode.com/u/" +
+                          searchResult.leetcode_username,
+                        "_blank"
+                      )
                     }
-                    target="_blank"
-                  >
-                    <img
-                      src={searchResult.avatar}
-                      alt="User Avatar"
-                      className="rounded-xl w-80 h-80 mx-auto my-4"
-                    />
-                  </a>
+                  />
                   <h1>
                     <span className="font-bold">
                       <FaDiscord className="inline mr-2" />
