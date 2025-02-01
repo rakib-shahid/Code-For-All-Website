@@ -3,7 +3,7 @@ import ProjectCard from "./ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 function Projects() {
   const projects = [
@@ -43,12 +43,8 @@ function Projects() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        mousewheel={{
-          forceToAxis: false,
-          sensitivity: 1,
-        }}
         loop={true}
-        modules={[Pagination, Autoplay, Mousewheel]}
+        modules={[Pagination, Autoplay]}
         className="mySwiper w-[90%] max-w-[96rem] h-[520px] px-4"
       >
         {projects.map((project, index) => (
