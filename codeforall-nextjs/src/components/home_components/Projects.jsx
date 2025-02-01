@@ -33,7 +33,7 @@ function Projects() {
         className="p-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-400 
                    text-6xl font-extrabold mt-8 font-mono text-center"
       >
-        Code for All Projects
+        Projects
       </h1>
 
       <Swiper

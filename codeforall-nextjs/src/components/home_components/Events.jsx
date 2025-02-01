@@ -106,7 +106,7 @@ const Events = () => {
         variants={containerVariant}
       >
         {upcomingEventData.length > 0 ? (
-          <div className="relative w-full max-w-2xl mx-auto">
+          <div className="relative w-[80%] max-w-2xl mx-auto">
             <Swiper
               effect={"cards"}
               grabCursor={true}
