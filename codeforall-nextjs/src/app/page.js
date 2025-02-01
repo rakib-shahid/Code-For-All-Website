@@ -10,7 +10,7 @@ const Header = dynamic(() => import("@/components/home_components/Header"), {
   ssr: true,
 });
 const Hero = dynamic(() => import("@/components/home_components/Hero"), {
-  ssr: false,
+  ssr: true,
 });
 const Board = dynamic(() => import("@/components/home_components/Board"), {
   ssr: true,
@@ -37,14 +37,14 @@ const Social = dynamic(() => import("@/components/home_components/Social"), {
 });
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  //   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  //   useEffect(() => {
+  //     const timer = setTimeout(() => {
+  //       setIsLoading(false);
+  //     }, 0);
+  //     return () => clearTimeout(timer);
+  //   }, []);
 
   const heroAnimation = {
     hidden: { opacity: 0, y: -30 },
@@ -55,14 +55,14 @@ export default function Home() {
     },
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen bg-white">
-        <Spinner />
-        <LottieAnimation />
-      </div>
-    );
-  }
+  //   if (isLoading) {
+  //     return (
+  //       <div className="flex justify-center items-center h-screen bg-white">
+  //         <Spinner />
+  //         <LottieAnimation />
+  //       </div>
+  //     );
+  //   }
 
   return (
     <div className="relative overflow-hidden bg-white">
