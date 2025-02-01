@@ -16,7 +16,7 @@ const Board = forwardRef((props, ref) => {
       className="bg-gradient-to-b from-transparent to-custom-dark-blue pb-20 from-0% to-100% "
     >
       <div className="text-center" ref={ref}>
-        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold mb-4 font-mono">
+        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold font-mono">
           Our Board
         </h1>
         <Swiper
@@ -35,10 +35,13 @@ const Board = forwardRef((props, ref) => {
           pagination={{ clickable: true }}
           navigation
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper "
+          className="mySwiper justify-center w-[90%] mx-auto"
         >
           {boardInfo.map((member, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide
+              key={index}
+              className="py-4 flex justify-center items-center"
+            >
               <BoardCard
                 image={member.image}
                 name={member.name}
@@ -52,7 +55,7 @@ const Board = forwardRef((props, ref) => {
 
         <br />
 
-        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold mb-4 font-mono">
+        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold font-mono">
           Past Board
         </h1>
         <Swiper
@@ -71,10 +74,13 @@ const Board = forwardRef((props, ref) => {
           pagination={{ clickable: true }}
           navigation
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
+          className="mySwiper justify-center w-[90%] mx-auto"
         >
           {pastBoardInfo.map((member, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide
+              key={index}
+              className="py-4 flex justify-center items-center"
+            >
               <BoardCard
                 image={member.image}
                 name={member.name}
