@@ -150,7 +150,7 @@ export default function Leaderboard({}) {
   return (
     <div className="bg-white">
       <LottieAnimation />
-      <div className="leaderboard-container h-[120vh]">
+      <div className="leaderboard-container h-auto">
         <div className="content-container">
           {leaderboardData ? (
             <div style={{ margin: "0 auto" }}>
@@ -209,8 +209,6 @@ export default function Leaderboard({}) {
                 />
               )}
 
-              {}
-
               <UserCard
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
@@ -225,10 +223,8 @@ export default function Leaderboard({}) {
             </AnimationWrapper>
           )}
         </div>
-        <div className="social-container">
-          <Social />
-        </div>
       </div>
+      <Social />
     </div>
   );
 }

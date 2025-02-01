@@ -50,12 +50,12 @@ export default function SearchBar({ onSubmit, disabled }) {
               return "Invalid input!";
             }
           }}
-          className="w-full md:w-auto"
+          className="w-[80%] md:w-auto"
         />
         <Button
           isDisabled={disabled}
           type="submit"
-          className="w-full md:w-auto bg-primary-500 text-white font-semibold"
+          className="w-[80%] md:w-auto bg-primary-500 text-white font-semibold"
           radius="full"
         >
           Search
