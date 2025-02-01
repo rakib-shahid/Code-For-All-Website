@@ -15,7 +15,7 @@ const LottieAnimation = () => {
 
   return (
     <div
-      className="absolute left-0 w-full h-[100vh] -z-1"
+      className="absolute left-0 w-full h-[100vh] -z-1 pointer-events-none"
       style={{ top: "-20vh" }}
     >
       <Lottie options={defaultOptions} />
