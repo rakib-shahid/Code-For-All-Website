@@ -25,6 +25,7 @@ export default function IncomingEvent({
   location,
   timestamp,
   rsvpLink,
+  isMoving,
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const parsedDate = parseISO(timestamp);
@@ -32,13 +33,16 @@ export default function IncomingEvent({
   const date = format(parsedDate, "dd");
   const full = format(parsedDate, "EEEE, MMMM do yyyy");
   const time = format(parsedDate, "h:mm a");
-
   return (
     <>
       <Card
         className="w-full mx-auto dark bg-gradient-to-br from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out"
         isPressable
-        onPress={onOpen}
+        onPress={() => {
+          if (!isMoving) {
+            onOpen();
+          }
+        }}
       >
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
           <h4 className="font-bold text-4xl text-white">{title}</h4>
@@ -131,7 +135,6 @@ export default function IncomingEvent({
                   </div>
 
                   <div className="flex gap-3 items-center">
-                    {/* Date Box */}
                     <div className="flex-none border-1 border-default-200/50 rounded-small text-center w-11 overflow-hidden">
                       <div className="text-tiny bg-default-100 py-0.5 text-default-500">
                         {month.substring(0, 3)}
@@ -140,7 +143,6 @@ export default function IncomingEvent({
                         {date}
                       </div>
                     </div>
-                    {/* Date Details */}
                     <div className="flex flex-col gap-0.5">
                       <p className="text-medium text-foreground font-medium text-white">
                         {full}
@@ -162,8 +164,9 @@ export default function IncomingEvent({
                     className="mt-4 mx-auto w-[50%] py-8 text-lg font-semibold"
                     color="primary"
                     onPress={() => window.open(rsvpLink, "_blank")}
+                    isDisabled={rsvpLink === ""}
                   >
-                    RSVP
+                    {rsvpLink === "" ? "No RSVP Link" : "RSVP"}
                   </Button>
                 </div>
               </DrawerBody>

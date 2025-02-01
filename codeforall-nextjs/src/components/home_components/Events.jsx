@@ -1,12 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import PastEventCard from "./PastEventCard";
 import IncomingEvent from "./IncomingEvent";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import { Spinner } from "@heroui/spinner";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCards } from "swiper/modules";
+import { EffectCards } from "swiper/modules";
 
 const fetcher = (url, options = {}) =>
   fetch(url, options)
@@ -31,6 +32,9 @@ const Events = () => {
     "/api/recent_events",
     fetcher
   );
+
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const [isMoving, setIsMoving] = useState(false);
 
   if (!upcomingEventData || !recentEventData) {
     return (
@@ -59,10 +63,9 @@ const Events = () => {
       transition: { duration: 1, ease: "easeOut" },
     },
   };
-
   return (
     <div className="relative z-10 flex-col">
-      <h4 className="p-0 bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold mb-4 font-mono text-center text-white">
+      <h4 className="bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold font-mono text-center text-white">
         Past Events
       </h4>
 
@@ -91,19 +94,27 @@ const Events = () => {
         )}
       </motion.div>
 
-      <h4 className="p-0 bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold mt-[6rem] font-mono text-center text-white">
+      <h4 className="bg-clip-text text-transparent bg-gradient text-4xl md:text-5xl font-bold mt-[2rem] font-mono text-center text-white">
         Upcoming Events
       </h4>
 
-      <div className="flex flex-wrap justify-center mt-8">
+      <motion.div
+        className="flex flex-wrap justify-center mt-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.01 }}
+        variants={containerVariant}
+      >
         {upcomingEventData.length > 0 ? (
           <div className="relative w-full max-w-2xl mx-auto">
             <Swiper
               effect={"cards"}
               grabCursor={true}
-              modules={[EffectCards, Navigation]}
+              modules={[EffectCards]}
               className="mySwiper w-full"
-              navigation={true}
+              onSwiper={setSwiperInstance}
+              onSlideChange={() => setIsMoving(true)}
+              onTransitionEnd={() => setIsMoving(false)}
             >
               {upcomingEventData.map((event, index) => (
                 <SwiperSlide key={index} className="rounded-lg">
@@ -114,10 +125,26 @@ const Events = () => {
                     timestamp={event.event_time}
                     location={event.location}
                     rsvpLink={event.rsvp_url}
+                    isMoving={isMoving}
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
+
+            <div className="flex justify-center mt-4 space-x-6">
+              <button
+                className="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-purple-600 transition"
+                onClick={() => swiperInstance?.slidePrev()}
+              >
+                &lt;
+              </button>
+              <button
+                className="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-purple-600 transition"
+                onClick={() => swiperInstance?.slideNext()}
+              >
+                &gt;
+              </button>
+            </div>
           </div>
         ) : (
           <div className="flex justify-center items-center mt-4">
@@ -126,7 +153,7 @@ const Events = () => {
             </h1>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
