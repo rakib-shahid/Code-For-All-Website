@@ -219,7 +219,7 @@ export default function Leaderboard({}) {
             </div>
           ) : (
             <AnimationWrapper>
-              <div className="flex justify-center items-center h-[80vh]">
+              <div className="flex justify-center items-center h-[100vh]">
                 <Spinner />
               </div>
             </AnimationWrapper>
