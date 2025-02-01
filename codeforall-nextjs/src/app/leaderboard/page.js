@@ -24,7 +24,7 @@ const Header = dynamic(() => import("@/components/home_components/Header"), {
 });
 const LottieAnimation = dynamic(
   () => import("@/components/home_components/LottieAnimation"),
-  { ssr: true }
+  { ssr: false }
 );
 const Social = dynamic(() => import("@/components/home_components/Social"), {
   ssr: true,
