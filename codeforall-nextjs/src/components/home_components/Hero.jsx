@@ -1,5 +1,6 @@
 "use client";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
+import { Player } from "@lottiefiles/react-lottie-player";
 import { forwardRef } from "react";
 import animationData from "@/../public/assets/animation/PurpleComputer.json";
 
@@ -23,12 +24,20 @@ const Hero = forwardRef((props, ref) => {
         className=" mt-0 mb-0  md:container md:mx-auto text-center rounded-lg p-8"
         style={{ backdropFilter: "blur(2px)" }}
       >
-        <Lottie
+        {/* <Lottie
           options={defaultOptions}
           height={300}
           width={300}
           className="mx-auto mb-0"
+        /> */}
+        <Player
+          autoplay
+          loop
+          src={animationData}
+          className="mx-auto mb-0 h-[300px] w-[300px]"
+          //   style={{ width: "300", height: "300" }}
         />
+
         <h1
           className="hover:scale-105 ease-in-out duration-300 p-0 
                             bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-400 
