@@ -166,7 +166,7 @@ export default function IncomingEvent({
                     onPress={() => window.open(rsvpLink, "_blank")}
                     isDisabled={rsvpLink === ""}
                   >
-                    {rsvpLink === "" ? "No RSVP Link" : "RSVP"}
+                    {rsvpLink === "" ? "No RSVP Link Yet!" : "RSVP"}
                   </Button>
                 </div>
               </DrawerBody>
