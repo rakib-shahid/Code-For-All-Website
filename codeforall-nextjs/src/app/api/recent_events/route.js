@@ -8,8 +8,13 @@ export async function GET() {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      "SELECT * FROM events WHERE event_time < NOW() ORDER BY event_time ASC LIMIT 3;"
+      `SELECT *, event_time AS event_time_ny 
+         FROM events 
+         WHERE event_time < (NOW() AT TIME ZONE 'America/New_York' - INTERVAL '24 hours')
+         ORDER BY event_time ASC 
+         LIMIT 3;`
     );
+
     client.release();
 
     return new Response(JSON.stringify(result.rows), {
