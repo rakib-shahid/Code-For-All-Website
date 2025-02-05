@@ -4,11 +4,13 @@ import CD from "./assets/ClubDay.jpg";
 import CD2 from "./assets/ClubDay2.jpg";
 import ATI from "./assets/1712856119764.jpg";
 import ATI2 from "./assets/1712856119764.jpg";
+import { dateInput } from "@nextui-org/react";
 
 export const PASTEVENTSINFO = [
   {
     image: [TIPD2, TIPD],
     title: "Tech Internship Panel",
+    title2: "dsdsad" ,
     description:
       "We collaborated with 'Girls Who Code' and 'Learning Commons' to share experience and valuable career advice from students who secured prestigous internships at companies such as Bloomberg, Goldman Sachs, Con Edison, Amazon and Nintendo.",
   },

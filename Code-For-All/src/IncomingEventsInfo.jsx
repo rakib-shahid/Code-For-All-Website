@@ -6,4 +6,9 @@ export const INCOMINGEVENTSINFO = [
     title: "Incoming Event",
     description: "upcoming event description",
   },
+<<<<<<< Updated upstream
 ];
+=======
+
+];
+>>>>>>> Stashed changes

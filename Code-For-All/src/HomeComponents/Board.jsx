@@ -6,6 +6,7 @@ import {PASTBOARDINFO} from '../PastBoard'
 import { forwardRef, useEffect, useState } from 'react';
 
 const Board = forwardRef((props, ref) => {
+<<<<<<< Updated upstream
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
     useEffect(() => {
@@ -149,5 +150,86 @@ const Board = forwardRef((props, ref) => {
         
     )
 })
+=======
+  return (
+    <section
+      id="second-section"
+      className="bg-gradient-to-b from-transparent to-custom-dark-blue pb-72"
+    >
+      <div className="text-center" ref={ref}>
+        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight">
+          Our Board
+        </h1>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1600: { slidesPerView: 5 },
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          navigation
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper pb-12" // Added padding-bottom
+        >
+          {BOARDINFO.map((member, index) => (
+            <SwiperSlide key={index}>
+              <BoardCard
+                image={member.image}
+                name={member.name}
+                role={member.role}
+                description={member.description}
+                link={member.link}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="mb-20"></div> {/* Replaced br with margin spacing */}
+
+        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight">
+          Past Board
+        </h1>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1500: { slidesPerView: 3 },
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          navigation
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper pb-12" // Added padding-bottom
+        >
+          {PASTBOARDINFO.map((member, index) => (
+            <SwiperSlide key={index}>
+              <BoardCard
+                image={member.image}
+                name={member.name}
+                role={member.role}
+                description={member.description}
+                link={member.link}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
+  );
+});
+>>>>>>> Stashed changes
 
 export default Board;

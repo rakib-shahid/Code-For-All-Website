@@ -8,3 +8,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+{projects.map((project, index) => (
+  <ProjectCard
+    key={index}
+    {...project}
+    reverse={index % 2 !== 0} // Alternates the layout for each project
+  />
+))}
