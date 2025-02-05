@@ -8,11 +8,10 @@ export async function GET() {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      `SELECT *, 
-                event_time AT TIME ZONE 'UTC' AT TIME ZONE 'America/New_York' AS event_time_ny
+      `SELECT *, event_time AS event_time_ny 
          FROM events 
-         WHERE event_time < (NOW() AT TIME ZONE 'UTC' - INTERVAL '24 hours')
-         ORDER BY event_time_ny ASC 
+         WHERE event_time < (NOW() AT TIME ZONE 'America/New_York' - INTERVAL '24 hours')
+         ORDER BY event_time ASC 
          LIMIT 3;`
     );
 
