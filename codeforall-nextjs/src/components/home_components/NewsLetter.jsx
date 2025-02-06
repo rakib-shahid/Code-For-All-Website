@@ -10,6 +10,27 @@ const NewsLetter = () => {
     return re.test(String(email).toLowerCase());
   };
 
+  const sendConfirmation = async (confirmedEmail) => {
+    try{
+      const response = await fetch(
+        "/api/sendConfirmation",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: confirmedEmail }),
+        }
+      )
+
+      if(!response.ok){
+        alert("error sending confirmation email")
+      }
+    }catch(e){
+      alert("error sending confirmation email")
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -36,6 +57,7 @@ const NewsLetter = () => {
         setEmail("");
         setError("");
         alert("Successfully subscribed!");
+        await sendConfirmation(email)
       } else {
         const errorData = await response.json();
         setError(
