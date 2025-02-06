@@ -19,21 +19,184 @@ body {
   background: var(--background);
 }
 .glow {
-  box-shadow: 0 0 10px rgba(133, 13, 245, 0.8);
+  box-shadow: 0 0 10px rgba(133, 13, 245, 0.8); /* Glow effect for box without hover (stays glowing all the timne) */
 }
 .textglow {
-  text-shadow: 0 0 10px rgba(137, 11, 255, 0.8);
+  text-shadow: 0 0 10px rgba(137, 11, 255, 0.8); /*Text Glow (Stays glowing all the time) */
 }
 .greenTextGlow {
-  text-shadow: 0 0 10px rgba(96, 255, 11, 0.8);
+  text-shadow: 0 0 10px rgba(96, 255, 11, 0.8); /*Text Glow (Stays glowing all the time) */
 }
 
 .hover\:glow:hover {
-  box-shadow: 0 0 10px rgba(133, 13, 245, 0.8);
+  box-shadow: 0 0 10px rgba(133, 13, 245, 0.8); /* Glow effect  when hover*/
 }
 
 .nav-item:hover {
   transform: scale(1.05);
   text-decoration: underline;
   transition: transform 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 5s ease infinite;
+  background-size: 300% 300%;
+}
+
+.glow-purple {
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+}
+
+.glow-button {
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+}
+
+@keyframes headingPop {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for a "bounce" effect on the subheading */
+@keyframes subheadingBounce {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for a fade + slide-up for the paragraph */
+@keyframes paragraphFadeSlide {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-headingPop {
+    animation: headingPop 1.2s ease-out backwards;
+  }
+  .animate-subheadingBounce {
+    animation: subheadingBounce 1.2s ease-out backwards;
+    /* You can add a slight delay if you want them to appear after the heading */
+    animation-delay: 0.3s;
+  }
+  .animate-paragraphFadeSlide {
+    animation: paragraphFadeSlide 1.2s ease-out backwards;
+    /* Additional delay so it starts after subheading finishes */
+    animation-delay: 0.6s;
+  }
+
+  /* Example glow class (if you haven't already defined one) */
+  .glow-purple {
+    text-shadow: 0 0 5px #9f7aea, 0 0 10px #9f7aea, 0 0 15px #9f7aea;
+  }
+
+  /* Example brightness class if you need it */
+  .bright-text {
+    filter: brightness(1.3);
+  }
+}
+
+/* Add this to your CSS file */
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+  margin: 0 8px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+}
+
+.swiper-pagination-bullet-active {
+  background: rgb(39, 39, 39) !important;
+  transform: scale(2);
+  box-shadow: 0 0 10px rgba(133, 13, 245, 0.8);
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(2);
+  background: rgba(225, 0, 255, 0.5) !important;
+  box-shadow: 0 0 10px rgb(47, 0, 90);
+}
+/* Adjust pagination position */
+.swiper-pagination {
+  bottom: 10px !important;
+}
+
+/* If you want more space, increase the pb-12 value in the Swiper className */
+.swiper-pagination-bullet {
+  margin: 0 10px !important;
+}
+
+/* Board.css */
+
+/* Make sure these selectors are loaded after Swiper's CSS */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 60px; /* Increase width */
+  height: 60px; /* Increase height */
+  border-radius: 50%; /* Make them circular for a curvy look */
+
+  box-shadow: 0 0 10px 3px rgba(142, 68, 173, 0.9); /* Purple glow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Optionally, override default positioning if needed */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 24px; /* Increase the arrow size */
+  font-weight: bold;
+  color: #fff; /* Change the arrow icon color (white contrasts nicely) */
+}
+
+/* Optional: Add a hover effect for extra interactivity */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  box-shadow: 0 0 15px 5px rgba(142, 68, 173, 0.9);
+  background-color: rgba(142, 68, 173, 0.5);
+
+  transform: scale(1.05);
+  transition: transform 0.2s, box-shadow 0.2s;
 }

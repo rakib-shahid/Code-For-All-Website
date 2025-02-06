@@ -13,10 +13,10 @@ const Board = forwardRef((props, ref) => {
   return (
     <section
       id="second-section"
-      className="bg-gradient-to-b from-transparent to-custom-dark-blue pb-20 from-0% to-100% "
+      className="bg-gradient-to-b from-transparent to-custom-dark-blue"
     >
       <div className="text-center" ref={ref}>
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold font-mono">
+        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight">
           Our Board
         </h1>
         <Swiper
@@ -35,12 +35,12 @@ const Board = forwardRef((props, ref) => {
           pagination={{ clickable: true }}
           navigation
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper justify-center w-[90%] mx-auto"
+          className="mySwiper justify-center w-[90%] mx-auto pb-12 h-[35rem]"
         >
           {boardInfo.map((member, index) => (
             <SwiperSlide
               key={index}
-              className="py-4 flex justify-center items-center"
+              className="flex justify-center items-center"
             >
               <BoardCard
                 image={member.image}
@@ -53,9 +53,9 @@ const Board = forwardRef((props, ref) => {
           ))}
         </Swiper>
 
-        <br />
+        <div className="mb-20" />
 
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-6xl md:text-7xl font-bold font-mono">
+        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight">
           Past Board
         </h1>
         <Swiper
@@ -74,12 +74,12 @@ const Board = forwardRef((props, ref) => {
           pagination={{ clickable: true }}
           navigation
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper justify-center w-[90%] mx-auto"
+          className="mySwiper justify-center w-[90%] mx-auto h-[35rem]"
         >
           {pastBoardInfo.map((member, index) => (
             <SwiperSlide
               key={index}
-              className="py-4 flex justify-center items-center"
+              className="flex justify-center items-center"
             >
               <BoardCard
                 image={member.image}
