@@ -1,0 +1,161 @@
+[
+  {
+    "image": "/assets/board_images/justin.jpg",
+    "name": "Justin Espinal",
+    "role": "President & Founder",
+    "description": "I love to collect figures!",
+    "link": "https://www.linkedin.com/in/justinespinal/"
+  },
+  {
+    "image": "/assets/board_images/thomas.jpeg",
+    "name": "Thomas Soupionis",
+    "role": "Vice-President & Co-Founder",
+    "description": "I like buying sneakers",
+    "link": "https://www.linkedin.com/in/thomas-soupionis/"
+  },
+  {
+    "image": "/assets/board_images/eric_img.jpeg",
+    "name": "Eric Salazar",
+    "role": "Treasurer",
+    "description": "I have an orange cat named bibi",
+    "link": "https://www.linkedin.com/in/eric-salazar04/"
+  },
+  {
+    "image": "/assets/board_images/amart.jpg",
+    "name": "Andrew Martin",
+    "role": "Secretary & Advisor",
+    "description": "I used to study theatre",
+    "link": "https://www.linkedin.com/in/andrew-martin72/"
+  },
+  {
+    "image": "/assets/board_images/jonnathan.jpg",
+    "name": "Jonnathan Saavedra",
+    "role": "Event Manager",
+    "description": "I love to watch Justin collect figures!",
+    "link": "https://www.linkedin.com/in/jonnathan-saavedra/"
+  },
+  {
+    "image": "/assets/board_images/sophia.png",
+    "name": "Sophia Yau",
+    "role": "Event Manager & Tutor",
+    "description": "I love cats",
+    "link": "https://www.linkedin.com/in/sophiayau/"
+  },
+  {
+    "image": "/assets/board_images/romel.jpg",
+    "name": "Vishal Romel Charran",
+    "role": "Workshop Developer",
+    "description": "What No Internships Look Like!",
+    "link": "https://www.linkedin.com/in/vishal-charran-36b1221bb/"
+  },
+  {
+    "image": "/assets/board_images/rakib.jpg",
+    "name": "Rakib Shahid",
+    "role": "Workshop Developer & Tutor",
+    "description": "I like playing guitar and watching F1",
+    "link": "https://www.linkedin.com/in/rakib-shahid/"
+  },
+  {
+    "image": "/assets/board_images/mike.jpeg",
+    "name": "Ye Htut Maung",
+    "role": "Workshop Developer",
+    "description": "I like Japanese BBQ",
+    "link": "https://www.linkedin.com/in/ye-htut-maung/"
+  },
+
+  {
+    "image": "/assets/board_images/daniel.jpg",
+    "name": "Daniel Jackson",
+    "role": "Workshop Developer",
+    "description": "Like to travel, Gym, skateboard",
+    "link": "https://www.linkedin.com/in/danieljac/"
+  },
+
+  {
+    "image": "/assets/board_images/fedy.jpg",
+    "name": "Fedy Cherif",
+    "role": "Workshop Developer",
+    "description": "I like making IDEs and occasionally playing sports",
+    "link": "https://www.linkedin.com/in/fedycherif/"
+  },
+  {
+    "image": "https://i.imgur.com/a350HHm.png",
+    "name": "Yonghao Lin",
+    "role": "Tutor",
+    "description": "I like cats, crocheting, video games (Minecraft), and the gym",
+    "link": "https://www.linkedin.com/in/yonghao-lin-b6027b242/"
+  },
+  {
+    "image": "/assets/board_images/feng.jpeg",
+    "name": "Fengsheng Chen",
+    "role": "Tutor",
+    "description": "Souls game enjoyer",
+    "link": "https://www.linkedin.com/in/fengsheng-chen/"
+  },
+  {
+    "image": "/assets/board_images/matt.jpg",
+    "name": "Matthew Odinsky",
+    "role": "Tutor",
+    "description": "I love to cook",
+    "link": "https://www.linkedin.com/in/matthew-odinsky/"
+  },
+  {
+    "image": "/assets/board_images/lauren.jpg",
+    "name": "Lauren Mistretta",
+    "role": "Advisor",
+    "description": "I enjoy playing video games and drawing!",
+    "link": "https://www.linkedin.com/in/lauren-mistretta-9027aa253/"
+  },
+  {
+    "image": "/assets/board_images/shaine.jpeg",
+    "name": "Shaine Lomenario",
+    "role": "Marketing",
+    "description": "I like to play video games and the piano",
+    "link": "https://www.linkedin.com/in/shaine-lomenario-955168216/"
+  },
+  {
+    "image": "/assets/board_images/dennis.jpeg",
+    "name": "Dennis Do",
+    "role": "Marketing",
+    "description": "I love working out, playing sports, and meeting new people",
+    "link": "https://www.linkedin.com/in/dennis-do-coding/"
+  },
+  {
+    "image": "/assets/board_images/poyao.jpg",
+    "name": "Poyao Tsui",
+    "role": "Marketing",
+    "description": "I used to eat crayons as a kid",
+    "link": "https://www.linkedin.com/in/poyaotsui/"
+  },
+
+  {
+    "image": "/assets/board_images/kerlyn.jpg",
+    "name": "Kerlyn Difo",
+    "role": "Newsletter",
+    "description": "I have a dog named gordis",
+    "link": "https://www.linkedin.com/in/kerlyn-difo-81059b23b/"
+  },
+
+  {
+    "image": "/assets/board_images/tasnim.jpg",
+    "name": "Tasnim Hossain",
+    "role": "Newsletter",
+    "description": "I love Tex chicken",
+    "link": "https://www.linkedin.com/in/tasnim-hossain-ny/"
+  },
+  {
+    "image": "/assets/board_images/paulo.jpg",
+    "name": "Paulo Criollo",
+    "role": "Company Outreach",
+    "description": "I enjoy collaborating with others and training for triathlons.",
+    "link": "https://www.linkedin.com/in/paulocriollo/"
+  },
+
+  {
+    "image": "/assets/board_images/oliver.jpg",
+    "name": "Oliver",
+    "role": "Mascot",
+    "description": "Meow",
+    "link": "https://www.linkedin.com/company/code-for-all-qc"
+  }
+]
