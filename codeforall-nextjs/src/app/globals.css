@@ -138,25 +138,26 @@ body {
 
 /* Add this to your CSS file */
 .swiper-pagination-bullet {
+  z-index: 99999 !important;
   width: 12px !important;
   height: 12px !important;
   background: rgba(0, 0, 0, 0.5) !important;
   opacity: 1 !important;
   margin: 0 8px !important;
   transition: all 0.3s ease !important;
-  box-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+  /* box-shadow: 0 0 12px rgba(192, 132, 252, 0.4); */
 }
 
 .swiper-pagination-bullet-active {
   background: rgb(39, 39, 39) !important;
-  transform: scale(2);
-  box-shadow: 0 0 10px rgba(133, 13, 245, 0.8);
+  transform: scale(1.25);
+  /* box-shadow: 0 0 10px rgba(133, 13, 245, 0.8); */
 }
 
 .swiper-pagination-bullet:hover {
-  transform: scale(2);
+  transform: scale(1.25);
   background: rgba(225, 0, 255, 0.5) !important;
-  box-shadow: 0 0 10px rgb(47, 0, 90);
+  /* box-shadow: 0 0 10px rgb(47, 0, 90); */
 }
 /* Adjust pagination position */
 .swiper-pagination {
@@ -165,6 +166,8 @@ body {
 
 /* If you want more space, increase the pb-12 value in the Swiper className */
 .swiper-pagination-bullet {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
   margin: 0 10px !important;
 }
 
@@ -173,10 +176,10 @@ body {
 /* Make sure these selectors are loaded after Swiper's CSS */
 .swiper-button-next,
 .swiper-button-prev {
-  width: 60px; /* Increase width */
-  height: 60px; /* Increase height */
+  width: 3rem !important; /* Increase width */
+  height: 3rem !important; /* Increase height */
   border-radius: 50%; /* Make them circular for a curvy look */
-
+  /* background-color: rgba(142, 68, 173, 0.5); */
   box-shadow: 0 0 10px 3px rgba(142, 68, 173, 0.9); /* Purple glow */
   display: flex;
   align-items: center;
@@ -186,7 +189,7 @@ body {
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 24px; /* Increase the arrow size */
+  font-size: 1rem !important; /* Increase the arrow size */
   font-weight: bold;
   color: #fff; /* Change the arrow icon color (white contrasts nicely) */
 }

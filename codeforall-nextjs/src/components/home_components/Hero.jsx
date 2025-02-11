@@ -18,7 +18,7 @@ const Hero = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="relative flex items-center md:h-[90vh] h-[40vh]">
+    <div className="relative flex items-center min-h-screen">
       <section className="mt-0 mb-0 md:container md:mx-auto text-center rounded-lg p-8 relative z-10">
         {/* <Lottie
           options={defaultOptions}
@@ -29,12 +29,14 @@ const Hero = forwardRef((props, ref) => {
         <div className="absolute inset-0 bg-gradient-to-r animate-pulse-slow rounded-lg" /> */}
 
         <div className="relative z-20">
-          <Lottie
-            options={defaultOptions}
-            height={300}
-            width={300}
-            className="mx-auto mb-0 pointer-events-none"
-          />
+          <div className="pointer-events-none">
+            <Lottie
+              options={defaultOptions}
+              height={300}
+              width={300}
+              className="mx-auto mb-0"
+            />
+          </div>
 
           <div className="bg-black/40 backdrop-blur-lg p-8 rounded-3xl shadow-2xl shadow-purple-900/50">
             {/* Main Heading */}

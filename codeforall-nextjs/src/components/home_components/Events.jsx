@@ -67,7 +67,7 @@ const Events = () => {
     <div className="relative z-10 flex-col">
       <h4
         className="p-0 bg-clip-text text-5xl md:text-6xl font-extrabold mb-4 font-sans
-                tracking-tight text-center text-white"
+                tracking-tight text-center text-white drop-shadow-[0_35px_35px_rgba(0,0,0,0.85)]"
       >
         Past Events
       </h4>
@@ -87,6 +87,7 @@ const Events = () => {
                 description={event.description}
                 mainImage={event.main_image_url}
                 images={event.additional_images}
+                date={event.event_time}
               />
             </motion.div>
           ))
@@ -97,7 +98,7 @@ const Events = () => {
         )}
       </motion.div>
 
-      <h4 className="p-0 bg-clip-text text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight  mt-[6rem]  text-center text-white">
+      <h4 className="p-0 bg-clip-text text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight  mt-[6rem]  text-center text-white drop-shadow-[0_35px_35px_rgba(0,0,0,0.85)]">
         Upcoming Events
       </h4>
 

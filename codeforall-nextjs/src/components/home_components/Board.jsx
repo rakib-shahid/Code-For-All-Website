@@ -16,7 +16,7 @@ const Board = forwardRef((props, ref) => {
       className="bg-gradient-to-b from-transparent to-custom-dark-blue"
     >
       <div className="text-center" ref={ref}>
-        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight">
+        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight ">
           Our Board
         </h1>
         <Swiper
@@ -32,7 +32,7 @@ const Board = forwardRef((props, ref) => {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          pagination={{ clickable: true }}
+          pagination={{ clickable: true, dynamicBullets: true }}
           navigation
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper justify-center w-[90%] mx-auto pb-12 h-[35rem]"
@@ -55,7 +55,7 @@ const Board = forwardRef((props, ref) => {
 
         <div className="mb-20" />
 
-        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight">
+        <h1 className="p-0 bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 text-5xl md:text-6xl font-extrabold mb-4 font-sans tracking-tight drop-shadow-[35px_35px_35px_rgba(255,255,255,0.45)]">
           Past Board
         </h1>
         <Swiper
@@ -71,10 +71,10 @@ const Board = forwardRef((props, ref) => {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          pagination={{ clickable: true }}
+          pagination={{ clickable: true, dynamicBullets: true }}
           navigation
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper justify-center w-[90%] mx-auto h-[35rem]"
+          className="mySwiper justify-center w-[90%] mx-auto h-[35rem] overflow-visible"
         >
           {pastBoardInfo.map((member, index) => (
             <SwiperSlide

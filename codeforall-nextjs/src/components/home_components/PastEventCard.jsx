@@ -6,6 +6,7 @@ import "swiper/css/autoplay";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
+import { format, parseISO } from "date-fns";
 import {
   Drawer,
   DrawerContent,
@@ -16,30 +17,46 @@ import {
   Button,
 } from "@heroui/react";
 
-function PastEventCard({ title, description, mainImage, images }) {
+function PastEventCard({ title, description, mainImage, images, date }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const parsedDate = parseISO(date);
+  const month = format(parsedDate, "MMMM");
+  const day = format(parsedDate, "dd");
+  const full = format(parsedDate, "MMMM do yyyy");
+  const time = format(parsedDate, "h:mm a");
 
   return (
     <>
       <Card
-        className="py-4 m-5 dark bg-gradient-to-tl from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out w-[80%] md:w-[60%] lg:w-[32rem] mx-auto"
+        className="py-0 m-5 dark bg-gradient-to-tl from-violet-600 to-slate-50 shadow-neon-purple-initial hover:shadow-neon-purple-hover transition-shadow duration-500 ease-in-out w-[80%] md:w-[60%] lg:w-[32rem] mx-auto tracking-tight hover:scale-105"
         isPressable
         onPress={onOpen}
       >
-        <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-          <h4 className="font-bold text-2xl text-black mb-4">{title}</h4>
+        <CardHeader className="pb-0 pt-2 px-4 flex-col items-center bg-transparent bg-gradient-to-r from-purple-500 via-pink-300 to-purple-600 ">
+          <h4
+            className="font-bold text-2xl mb-4 
+                   text-white leading-relaxed   
+
+                 
+                  
+          "
+          >
+            {title}
+          </h4>
         </CardHeader>
-        <CardBody className="overflow-visible py-2 items-center">
+        <CardBody className=" overflow-visible py-5 items-center">
           <Image
             alt={`${title} image`}
             className="object-cover rounded-xl mx-auto"
             src={mainImage}
             width={"90%"}
           />
+          <h4 className="font-bold text-[1rem] text-black opacity-50 mb-4 mt-4">
+            {full}
+          </h4>
         </CardBody>
         <Drawer
           size="xl"
-          backdrop="blur"
           className="dark"
           isOpen={isOpen}
           onOpenChange={onOpenChange}

@@ -83,7 +83,7 @@ export default function Home() {
       </motion.div>
       <div id="about"></div>
 
-      <div id="board" className="relative">
+      <div id="board" className="relative overflow-visible">
         <div className="absolute inset-x-0 -bottom-20 flex -z-1 opacity-40 pointer-events-none">
           <div className="relative w-screen h-auto">
             <img
