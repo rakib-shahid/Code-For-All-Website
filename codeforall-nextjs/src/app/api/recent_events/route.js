@@ -11,7 +11,7 @@ export async function GET() {
       `SELECT *, event_time AS event_time_ny 
          FROM events 
          WHERE event_time < (NOW() AT TIME ZONE 'America/New_York' - INTERVAL '24 hours')
-         ORDER BY event_time ASC 
+         ORDER BY event_time DESC 
          LIMIT 3;`
     );
 
